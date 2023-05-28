@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var speed: int = 400
+export var speed: int = 300
 var velocity: Vector2 = Vector2()
 var commit_gems: int = 0
 
@@ -15,12 +15,10 @@ func _physics_process(_delta):
 	move_and_slide(velocity)
 
 func _on_attract_area_entered(area: Area2D):
-	if area.is_in_group("commit_gem_area"):
-		print(area)
+	pass
 	
 func _on_pickup_area_entered(area: Area2D):
 	if area.is_in_group("commit_gem_area"):
 		# This is a hack and should be replaced
 		area.get_parent().queue_free()
 		commit_gems += 1
-		print(commit_gems)
