@@ -24,6 +24,10 @@ config/name="OpenPenguinSurvivors"
 run/main_scene="res://OpenPenguinSurvivors.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Player="*res://Player/Player.tscn"
+
 [editor]
 
 version_control_autoload_on_startup=true
