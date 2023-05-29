@@ -1,21 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Pickup/Pickup.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
-
-[node name="CommitGem" parent="." instance=ExtResource( 5 )]
-position = Vector2( 239, 248 )
-
-[node name="CommitGem2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 315, 331 )
-
-[node name="CommitGem3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 272, 94 )
-
-[node name="CommitGem4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 174, 135 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 58, 330 )

@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var speed: int = 100
 export var health: int = 100
 export var DamageIndicator: PackedScene = preload("res://Enemy/DamageIndicator.tscn")
+export var LootDrop: PackedScene = preload("res://Pickup/Pickup.tscn")
 
 
 func _ready():
@@ -20,4 +21,10 @@ func take_damage(damage: int):
 	add_child(damage_indicator)
 	
 	if self.health <= 0:
-		queue_free()
+		die()
+
+func die():
+	var loot_drop = LootDrop.instance()
+	loot_drop.position = self.position
+	self.get_parent().add_child(loot_drop)
+	queue_free()
