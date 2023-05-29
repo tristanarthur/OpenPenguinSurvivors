@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 export var SPEED: int = 400
 var direction: Vector2
 const DEFAULT_DIRECTION = Vector2(1, 0)
@@ -10,7 +9,7 @@ export var maximum_damage = 50
 
 func _ready():
 	pass
-	
+
 
 func _physics_process(delta: float):
 	if self.direction == null or self.direction == Vector2(0, 0):
