@@ -3,8 +3,8 @@ extends KinematicBody2D
 export var SPEED: int = 400
 var direction: Vector2
 const DEFAULT_DIRECTION = Vector2(1, 0)
-export var minimum_damage = 20
-export var maximum_damage = 50
+export var minimum_damage = 50
+export var maximum_damage = 80
 
 
 func _ready():
@@ -24,5 +24,7 @@ func _on_timeout():
 
 func _on_damage_area_entered(area: Area2D):
 	if area.is_in_group("enemy_hitbox") and area.has_method("take_damage"):
-		area.take_damage(randi() % self.maximum_damage + self.minimum_damage)
+		area.take_damage(
+			randi() % (self.maximum_damage - self.minimum_damage) + self.minimum_damage
+		)
 		queue_free()
