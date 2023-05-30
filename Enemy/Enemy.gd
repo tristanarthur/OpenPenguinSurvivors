@@ -32,10 +32,9 @@ func die():
 
 
 func _on_hitbox_area_entered(area):
+	$DamageGrace.start()
 	if area.is_in_group("player_hitbox"):
 		self.touching_player = true
-		self.try_do_damage()
-
 
 func try_do_damage():
 	if $DamageGrace.is_stopped():
@@ -45,7 +44,6 @@ func try_do_damage():
 func _on_hitbox_area_exited(area):
 	if area.is_in_group("player_hitbox"):
 		self.touching_player = false
-
 
 func _on_damage_grace_timeout():
 	if self.touching_player:
