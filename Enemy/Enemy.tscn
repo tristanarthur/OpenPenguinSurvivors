@@ -32,6 +32,7 @@ script = ExtResource( 3 )
 shape = SubResource( 4 )
 
 [node name="DamageGrace" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

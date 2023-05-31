@@ -24,5 +24,5 @@ func get_health_percentage():
 	return (self.current_health / self.max_health) * 100
 	
 func player_die():
-	pass
+	EventBus.emit_signal("player_die")
 		
