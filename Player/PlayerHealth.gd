@@ -1,13 +1,14 @@
 extends Node2D
 
 
-export var max_health = 100.0
-export var current_health = 100.0
+export var max_health: float = 100.0
+var current_health: float
 
 
 func _ready():
 	EventBus.connect("player_take_damage", self, "_on_player_take_damage")
 	EventBus.connect("player_receive_health", self, "_on_player_receive_health")
+	self.current_health = self.max_health
 
 func _on_player_take_damage(damage: int):
 	self.current_health = max(self.current_health - damage, 0)

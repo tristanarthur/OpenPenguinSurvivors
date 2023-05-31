@@ -2,13 +2,16 @@ extends KinematicBody2D
 
 export var speed: int = 300
 var velocity: Vector2 = Vector2()
-var current_level = 1
-var current_xp = 0.0
+var current_level: int
+var current_xp: float
 
 
 signal player_xp_update(xp_percent)
 signal player_level_up(level)
 
+func _ready():
+	self.current_level = 1
+	self.current_xp = 0.0
 
 
 func get_input():
@@ -40,10 +43,10 @@ func get_xp(xp: int):
 	var level_percent = (self.current_xp / self.get_xp_to_next_level()) * 100
 	emit_signal("player_xp_update", level_percent)
 	if level_percent >= 100:
-		self.level_up()
+		self.level_up(get_xp_to_next_level())
 
-func level_up():
-	self.current_xp = 0
+func level_up(xp_cost: int):
+	self.current_xp -= xp_cost
 	self.current_level += 1
 	emit_signal("player_level_up", self.current_level)
 	emit_signal("player_xp_update", self.current_xp)
