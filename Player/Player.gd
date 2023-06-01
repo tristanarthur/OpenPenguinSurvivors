@@ -12,7 +12,14 @@ signal player_level_up(level)
 func _ready():
 	self.current_level = 1
 	self.current_xp = 0.0
-
+	
+	
+func character_face_direction():
+	if self.velocity.x > 0 and $Sprite.scale.x < 0: # Moving Right, Facing Left
+		$Sprite.scale = Vector2(1.5, $Sprite.scale.y)
+	elif self.velocity.x < 0 and $Sprite.scale.x > 0: # Moving Left, Facing Right
+		$Sprite.scale = Vector2(-1.5, $Sprite.scale.y)
+	
 
 func get_input():
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -22,6 +29,7 @@ func get_input():
 func _physics_process(_delta):
 	get_input()
 	move_and_slide(velocity)
+	character_face_direction()
 
 
 func _on_attract_area_entered(area: Area2D):
